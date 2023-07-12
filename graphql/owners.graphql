@@ -1,0 +1,15 @@
+type Owner {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  cats: [Cat]!
+}
+
+type Query {
+  findOwner(id: ID!): Owner
+  findOwners: [Owner]!
+}
+
+type Mutation {
+  createOwner(firstName: String!, lastName: String!): Owner!
+}

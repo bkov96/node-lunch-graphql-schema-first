@@ -1,0 +1,16 @@
+type Cat {
+  id: ID!
+  name: String!
+  age: Int
+  owner: Owner
+}
+
+type Query {
+  findCat(id: ID!): Cat
+  findCats: [Cat]!
+  findStrayCats: [Cat]!
+}
+
+type Mutation {
+  createCat(name: String!, age: Int, ownerId: String): Cat!
+}
