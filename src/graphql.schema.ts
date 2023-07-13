@@ -40,6 +40,7 @@ export interface IQuery {
     findStrayCats(): Cat[] | Promise<Cat[]>;
     findOwner(input: FindOwnerInput): Nullable<Owner> | Promise<Nullable<Owner>>;
     findOwners(): Owner[] | Promise<Owner[]>;
+    testConnection(): string | Promise<string>;
 }
 
 export interface IMutation {
