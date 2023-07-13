@@ -17,10 +17,10 @@ export interface Cat {
 
 export interface IQuery {
     findCat(id: string): Nullable<Cat> | Promise<Nullable<Cat>>;
-    findCats(): Nullable<Cat>[] | Promise<Nullable<Cat>[]>;
-    findStrayCats(): Nullable<Cat>[] | Promise<Nullable<Cat>[]>;
+    findCats(): Cat[] | Promise<Cat[]>;
+    findStrayCats(): Cat[] | Promise<Cat[]>;
     findOwner(id: string): Nullable<Owner> | Promise<Nullable<Owner>>;
-    findOwners(): Nullable<Owner>[] | Promise<Nullable<Owner>[]>;
+    findOwners(): Owner[] | Promise<Owner[]>;
 }
 
 export interface IMutation {

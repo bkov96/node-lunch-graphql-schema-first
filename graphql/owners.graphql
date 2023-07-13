@@ -7,7 +7,7 @@ type Owner {
 
 type Query {
   findOwner(id: ID!): Owner
-  findOwners: [Owner]!
+  findOwners: [Owner!]!
 }
 
 type Mutation {

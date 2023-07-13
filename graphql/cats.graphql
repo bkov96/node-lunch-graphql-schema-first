@@ -7,8 +7,8 @@ type Cat {
 
 type Query {
   findCat(id: ID!): Cat
-  findCats: [Cat]!
-  findStrayCats: [Cat]!
+  findCats: [Cat!]!
+  findStrayCats: [Cat!]!
 }
 
 type Mutation {
