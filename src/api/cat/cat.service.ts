@@ -38,6 +38,10 @@ export class CatService {
     return this.prisma.cat.findUnique({ where: { id: input.id } });
   }
 
+  findCats(): Promise<PrismaCat[]> {
+    return this.prisma.cat.findMany();
+  }
+
   async findRelatedOwner(catId: string): Promise<Nullable<PrismaOwner>> {
     const relatedOwner = await this.prisma.cat
       .findUnique({

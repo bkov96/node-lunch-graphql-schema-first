@@ -57,4 +57,18 @@ export class CatResolver implements Partial<IMutation>, Partial<IQuery> {
       age: prismaCat.age,
     });
   }
+
+  @Query()
+  async findCats(): Promise<Cat[]> {
+    const prismaCats = await this.catService.findCats();
+
+    return prismaCats.map(
+      (prismaCat) =>
+        new Cat({
+          id: prismaCat.id,
+          name: prismaCat.name,
+          age: prismaCat.age,
+        }),
+    );
+  }
 }
