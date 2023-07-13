@@ -20,6 +20,10 @@ export class OwnerService {
     return this.prisma.owner.findUnique({ where: { id: findOwnerInput.id } });
   }
 
+  findOwners(): Promise<PrismaOwner[]> {
+    return this.prisma.owner.findMany();
+  }
+
   async findRelatedCats(ownerId: string): Promise<PrismaCat[]> {
     const relatedCats = await this.prisma.owner
       .findUnique({

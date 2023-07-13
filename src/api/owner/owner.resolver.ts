@@ -56,4 +56,18 @@ export class OwnerResolver implements Partial<IMutation>, Partial<IQuery> {
       lastName: prismaOwner.lastName,
     });
   }
+
+  @Query()
+  async findOwners(): Promise<Owner[]> {
+    const prismaOwners = await this.ownerService.findOwners();
+
+    return prismaOwners.map(
+      (prismaOwner) =>
+        new Owner({
+          id: prismaOwner.id,
+          firstName: prismaOwner.firstName,
+          lastName: prismaOwner.lastName,
+        }),
+    );
+  }
 }
