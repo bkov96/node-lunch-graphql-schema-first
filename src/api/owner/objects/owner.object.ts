@@ -1,7 +1,8 @@
-import { Cat, Owner as OwnerSchema } from 'src/graphql.schema';
+import { Cat } from 'src/api/cat/objects/cat.object';
+import { Owner as OwnerSchema } from 'src/graphql.schema';
 
 export class Owner implements OwnerSchema {
-  constructor(ownerSchema: OwnerSchema) {
+  constructor(ownerSchema: Partial<OwnerSchema>) {
     Object.assign(this, ownerSchema);
   }
 
