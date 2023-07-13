@@ -50,6 +50,10 @@ export class OwnerResolver implements Partial<IMutation>, Partial<IQuery> {
   ): Promise<Nullable<Owner>> {
     const prismaOwner = await this.ownerService.findOwner(input);
 
+    if (!prismaOwner) {
+      return null;
+    }
+
     return new Owner({
       id: prismaOwner.id,
       firstName: prismaOwner.firstName,
