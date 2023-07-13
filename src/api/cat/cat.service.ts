@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Cat as PrismaCat } from '@prisma/client';
 import { PrismaService } from 'src/common/prisma/prisma.service';
-import { CreateCatInput } from './inputs/create-cat.input';
+import { ICreateCatInput, IFindCatInput } from 'src/graphql.schema';
 
 @Injectable()
 export class CatService {
   constructor(private prisma: PrismaService) {}
 
-  createCat(input: CreateCatInput): Promise<PrismaCat> {
+  createCat(input: ICreateCatInput): Promise<PrismaCat> {
     if (!input.ownerId) {
       return this.createStrayCat(input);
     }
@@ -25,12 +25,16 @@ export class CatService {
     });
   }
 
-  createStrayCat(input: Omit<CreateCatInput, 'ownerId'>): Promise<PrismaCat> {
+  createStrayCat(input: Omit<ICreateCatInput, 'ownerId'>): Promise<PrismaCat> {
     return this.prisma.cat.create({
       data: {
         name: input.name,
         age: input.age,
       },
     });
+  }
+
+  findCat(input: IFindCatInput): Promise<Nullable<PrismaCat>> {
+    return this.prisma.cat.findUnique({ where: { id: input.id } });
   }
 }
