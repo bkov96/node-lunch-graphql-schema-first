@@ -42,6 +42,14 @@ export class CatService {
     return this.prisma.cat.findMany();
   }
 
+  findStrayCats(): Promise<PrismaCat[]> {
+    return this.prisma.cat.findMany({
+      where: {
+        ownerId: null,
+      },
+    });
+  }
+
   async findRelatedOwner(catId: string): Promise<Nullable<PrismaOwner>> {
     const relatedOwner = await this.prisma.cat
       .findUnique({
