@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AppResolver } from './app.resolver';
 import { CatModule } from './api/cat/cat.module';
+import { OwnerModule } from './api/owner/owner.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { CatModule } from './api/cat/cat.module';
       typePaths: ['./**/*.graphql'],
     }),
     CatModule,
+    OwnerModule,
   ],
   providers: [AppResolver],
 })
