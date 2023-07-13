@@ -6,19 +6,19 @@ type Owner {
 }
 
 type Query {
-  findOwner(input: FindOwnerInput!): Owner
+  findOwner(input: IFindOwnerInput!): Owner
   findOwners: [Owner!]!
 }
 
 type Mutation {
-  createOwner(input: CreateOwnerInput!): Owner!
+  createOwner(input: ICreateOwnerInput!): Owner!
 }
 
-input FindOwnerInput {
+input IFindOwnerInput {
   id: ID!
 }
 
-input CreateOwnerInput {
+input ICreateOwnerInput {
   firstName: String!
   lastName: String!
 }
