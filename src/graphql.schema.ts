@@ -8,6 +8,25 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export interface FindCatInput {
+    id: string;
+}
+
+export interface CreateCatInput {
+    name: string;
+    age?: Nullable<number>;
+    ownerId?: Nullable<string>;
+}
+
+export interface FindOwnerInput {
+    id: string;
+}
+
+export interface CreateOwnerInput {
+    firstName: string;
+    lastName: string;
+}
+
 export interface Cat {
     id: string;
     name: string;
@@ -16,16 +35,16 @@ export interface Cat {
 }
 
 export interface IQuery {
-    findCat(id: string): Nullable<Cat> | Promise<Nullable<Cat>>;
+    findCat(input: FindCatInput): Nullable<Cat> | Promise<Nullable<Cat>>;
     findCats(): Cat[] | Promise<Cat[]>;
     findStrayCats(): Cat[] | Promise<Cat[]>;
-    findOwner(id: string): Nullable<Owner> | Promise<Nullable<Owner>>;
+    findOwner(input: FindOwnerInput): Nullable<Owner> | Promise<Nullable<Owner>>;
     findOwners(): Owner[] | Promise<Owner[]>;
 }
 
 export interface IMutation {
-    createCat(name: string, age?: Nullable<number>, ownerId?: Nullable<string>): Cat | Promise<Cat>;
-    createOwner(firstName: string, lastName: string): Owner | Promise<Owner>;
+    createCat(input: CreateCatInput): Cat | Promise<Cat>;
+    createOwner(input: CreateOwnerInput): Owner | Promise<Owner>;
 }
 
 export interface Owner {

@@ -6,11 +6,21 @@ type Cat {
 }
 
 type Query {
-  findCat(id: ID!): Cat
+  findCat(input: FindCatInput!): Cat
   findCats: [Cat!]!
   findStrayCats: [Cat!]!
 }
 
 type Mutation {
-  createCat(name: String!, age: Int, ownerId: String): Cat!
+  createCat(input: CreateCatInput!): Cat!
+}
+
+input FindCatInput {
+  id: ID!
+}
+
+input CreateCatInput {
+  name: String!
+  age: Int
+  ownerId: String
 }
