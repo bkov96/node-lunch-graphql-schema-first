@@ -52,7 +52,7 @@ export interface Owner {
     id: string;
     firstName: string;
     lastName: string;
-    cats: Nullable<Cat>[];
+    cats: Cat[];
 }
 
 type Nullable<T> = T | null;
