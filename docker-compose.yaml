@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  dev-db-sf:
+  dev-db:
     image: postgres:alpine
-    container_name: dev-db
+    container_name: dev-db-sf
     restart: always
     ports:
       - "5432:5432"
